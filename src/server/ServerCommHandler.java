@@ -1,0 +1,8 @@
+package server;
+
+
+/**
+ * This class is empty, and it is fine because it already runs on the teacher's server
+ */
+public class ServerCommHandler {
+}
