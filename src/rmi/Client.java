@@ -17,9 +17,10 @@ public class Client {
 
     public static void main(String[] args) throws Exception {
 
-        String teamName = "";
+        String teamName = "PACKET_SNIFFERS";
 
-        ServerCommInterface teacherServer = (ServerCommInterface) Naming.lookup("rmi://SERVER_IP/Server");
+        // rmi://SERVER_IP/Server --> SERVER_IP should be changed with the actual IP address
+        ServerCommInterface teacherServer = (ServerCommInterface) Naming.lookup("rmi://192.168.0.10/Server");
         ClientCommHandler clientHandler = new ClientCommHandler(teacherServer, teamName);
 
         teacherServer.register(teamName, clientHandler);

@@ -18,28 +18,14 @@ import java.net.Socket;
 
 public class WorkerPi {
 
-    // this line is for final project so it will be uncommented
-    //private static final int PORT = 9000;
+    private static final int PORT = 9000;
 
     public static void main(String[] args) throws Exception {
-        // lines are temporary for testing
-        int PORT = 9000;
-        if (args.length > 0) {
-            try {
-                PORT = Integer.parseInt(args[0]);
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid port number, using default 9000");
-            }
-        }
-        //
-
         ServerSocket server = new ServerSocket(PORT);
-
         System.out.println("Pi listens on port " +  PORT);
 
         while (true) {
             Socket socket = server.accept();
-
             try(
                 ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
                 ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream())

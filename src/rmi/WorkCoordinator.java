@@ -1,7 +1,6 @@
 package rmi;
 
 import server.ServerCommInterface;
-
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -21,15 +20,8 @@ public class WorkCoordinator {
     private final ServerCommInterface server;
     private final String teamName;
 
-//    private final String[] piIp = {
-//            "",
-//            ""
-//    };
-//    private final int PORT = 9000;  // to uncomment for final project
-
-    private final String[] piIp = {"localhost", "localhost"};
-    // ports array temporary for testing
-    private final int[] ports = {9000, 9001};
+    private final String[] piIp = { "192.168.0.5" };
+    private final int PORT = 9000;
     private final AtomicBoolean hashCracked = new AtomicBoolean(false);
 
     public WorkCoordinator(ServerCommInterface server, String teamName) {
@@ -53,8 +45,7 @@ public class WorkCoordinator {
 
             new Thread(new PisExecutors(
                     piIp[i],
-                    ports[i],
-                    //PORT,
+                    PORT,
                     hash,
                     start,
                     end,
@@ -72,8 +63,5 @@ public class WorkCoordinator {
         if (server != null) {
             server.submitSolution(teamName, String.valueOf(solution));
         }
-
-        //server.submitSolution(teamName, String.valueOf(solution));
     }
-
 }
