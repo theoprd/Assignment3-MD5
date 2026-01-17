@@ -19,8 +19,7 @@ public class Client {
 
         String teamName = "PACKET_SNIFFERS";
 
-        // rmi://SERVER_IP/Server --> SERVER_IP should be changed with the actual IP address
-        ServerCommInterface teacherServer = (ServerCommInterface) Naming.lookup("rmi://192.168.0.10/Server");
+        ServerCommInterface teacherServer = (ServerCommInterface) Naming.lookup("rmi://SERVER_IP/Server"); //SERVER_IP string to replace with actual IP
         ClientCommHandler clientHandler = new ClientCommHandler(teacherServer, teamName);
 
         teacherServer.register(teamName, clientHandler);
